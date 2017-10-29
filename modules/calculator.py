@@ -1,7 +1,7 @@
-def validateNumber():
+def validateNumber(prompt):
     while True:
         try:
-            value = int(input(prompt))
+            value = float(input(prompt))
         except ValueError:
             print("Please enter a valid number")
             continue
@@ -13,33 +13,40 @@ def validateNumber():
             break
     return value
     
-def validateOperator():
+def validateOperator(prompt):
     while True:
-        if input(prompt) not in ('+', '-', '*', '/', '%', '^'):
+        value = input(prompt)
+        if value not in ('+', '-', '*', '/', '%', '^'):
             print ("Please enter a valid operator")
         else:
             break
+    return value
+        
 
-def calculate(operator1,op,operation2):
-
+def calculate(operator1,op,operator2):
+    result = 0
     if op == '+':
-        result = int(operator1) + int(operator2)
+        result =  (operator1) +  (operator2)
     elif op == '-':
-        result = int(operator1) - int(operator2)
+        result =  (operator1) -  (operator2)
     elif op == '/':
-        result = int(operator1) / int(operator2)
+        result =  (operator1) /  (operator2)
     elif op == '*':
-        result = int(operator1) * int(operator2)
+        result =  (operator1) *  (operator2)
     elif op == '%':
-        result = int(operator1) % int(operator2)
+        result =  (operator1) %  (operator2)
     elif op == '^':
-        result = int(operator1) ^ int(operator2)
+        result =  (operator1) **  (operator2)
     
     return result
 
 number1 = validateNumber("Please enter the first number: ")
 operation1 = validateOperator("Please enter an operator you wish to use (+,-,*,/,%,^)")
+
 number2 = validateNumber("Please enter the second number: ")
 
-result = calculate(number1,operator1,number2)
-print(result)
+result = calculate(number1,operation1,number2)
+
+print ("The result of ",number1,operation1,number2,"is", result)
+
+
