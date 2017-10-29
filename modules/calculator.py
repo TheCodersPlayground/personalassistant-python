@@ -43,14 +43,19 @@ def calculate(operator1,op,operator2):
     elif op == '-':
         result =  (operator1) -  (operator2)
     elif op == '/':
-        result =  (operator1) /  (operator2)
+        try:
+            result =  (operator1) /  (operator2)
+        except ZeroDivisionError:
+            print("The second operator cannot be zero")
+            result = repeatSecondInput(operator1,op,operator2)
     elif op == '*':
         result =  (operator1) *  (operator2)
     elif op == '%':
         result =  (operator1) %  (operator2)
     elif op == '^':
         result =  (operator1) **  (operator2)
-    
+
+    printResult(operator1,op,operator2,result)
     return result
 
 def continueCalculation(result):
@@ -59,11 +64,12 @@ def continueCalculation(result):
     
         if decision == '1':
             operation2 = validateOperator("Please enter an operator you wish to use on the previous result (+,-,*,/,%,^): ")
-            print(operation2)
+            #print(operation2)
             number3 = validateNumber("Please enter the next number: ")
-            print(number3)
+            #print(number3)
             result1 = calculate(result, operation2, number3)
             print ("The result of ",result, operation2, number3,"is", result1)
+            result = result1
             continue
         elif decision == '2':
             number1 = validateNumber("Please enter the first number: ")
@@ -75,14 +81,23 @@ def continueCalculation(result):
         elif decision == '3':
             break
     
-        
 
-number1 = validateNumber("Please enter the first number: ")
-operation1 = validateOperator("Please enter an operator you wish to use (+,-,*,/,%,^): ")
-number2 = validateNumber("Please enter the second number: ")
-result = calculate(number1,operation1,number2)
-print ("The result of ",number1, operation1, number2,"is", result)
-continueCalculation(result)
+def repeatSecondInput(number1,operation1,number2):
+    number2 = validateNumber("Please enter the second number: ")
+    result = calculate(number1,operation1,number2)
+    return result
+
+def printResult(number1,operation1,number2,result):
+     print ("The result of ",number1, operation1, number2,"is", result)
+
+def main():
+    number1 = validateNumber("Please enter the first number: ")
+    operation1 = validateOperator("Please enter an operator you wish to use (+,-,*,/,%,^): ")
+    number2 = validateNumber("Please enter the second number: ")
+    result = calculate(number1,operation1,number2)
+    continueCalculation(result)
+
+
 
 
 
