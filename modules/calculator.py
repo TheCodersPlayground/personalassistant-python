@@ -90,7 +90,7 @@ def repeatSecondInput(number1,operation1,number2):
 def printResult(number1,operation1,number2,result):
      print ("The result of ",number1, operation1, number2,"is", result)
 
-def main():
+def calculator_main():
     number1 = validateNumber("Please enter the first number: ")
     operation1 = validateOperator("Please enter an operator you wish to use (+,-,*,/,%,^): ")
     number2 = validateNumber("Please enter the second number: ")
