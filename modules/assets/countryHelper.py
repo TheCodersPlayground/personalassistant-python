@@ -7,6 +7,6 @@ class countryHelper:
         return keyString, inputList
 
     def getCountryData():
-        with open('assets/country.json') as json_data:
+        with open('modules/assets/country.json') as json_data:
             countryData = json.load(json_data)
         return countryData
