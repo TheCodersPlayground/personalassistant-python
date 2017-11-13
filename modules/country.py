@@ -38,4 +38,3 @@ def countryBot(inputList, countryData):
 def callCountryBot():
     inputList, countryData = getData()
     countryBot(inputList, countryData)
-callCountryBot()
