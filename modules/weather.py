@@ -1,5 +1,5 @@
 import datetime
-from assets.temperatureHelper import tempHelper
+from modules.assets.temperatureHelper import tempHelper
 
 def theWeatherBot():
     loopController = True
@@ -18,17 +18,30 @@ def theWeatherBot():
                         continueOperation = input("Want to know the forcast for another month? If yes, please press Y and if you want to exit, please press N: ")
                         if continueOperation in tempHelper.assent:
                             theWeatherBot()
-                        break        
+                        break
+            
             else:
                 currentMonth = datetime.datetime.now().strftime("%B").lower()
                 temperature = tempHelper.getTemperature(currentMonth,weatherData)
                 print ("The temperature in celcius: ",temperature)          
                 print ("The temperature in Fahrenheit: ",tempHelper.celciusToFahrenheit(temperature))
-                loopController = False  
-                break
+                loopController = False 
+                continueOperation = input("Want to know the forcast for another month? If yes, please press Y and if you want to exit, please press N: ")
+                if continueOperation in tempHelper.assent:
+                    theWeatherBot()
+                break 
+
+        elif  len(userReqList) == 1 and userReq in tempHelper.monthArray:
+            temperature = tempHelper.getTemperature(userReq,weatherData)
+            print ("The temperature in celcius: ",temperature)          
+            print ("The temperature in Fahrenheit: ",tempHelper.celciusToFahrenheit(temperature))
+            loopController = False
+            continueOperation = input("Want to know the forcast for another month? If yes, please press Y and if you want to exit, please press N: ")
+            if continueOperation in tempHelper.assent:
+                theWeatherBot()
+            break
         else:
             print("I am constantly evolving and will be ready to take over the world, like real soon! But for now I couldn't understand you so can you please repeat clearly?")       
             userReq, userReqList = tempHelper.getUserInput()
             continue
 
-theWeatherBot()

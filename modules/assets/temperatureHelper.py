@@ -7,7 +7,7 @@ class tempHelper:
         return float("{0:.1f}".format(fahrenheit))
 
     def getWeatherData():
-        with open("assets/weatherInfo.json") as weatherRawData:
+        with open("modules/assets/weatherInfo.json") as weatherRawData:
             weatherData = json.load(weatherRawData)
         return weatherData
 
