@@ -23,18 +23,21 @@ def HELEN():
     option = input(mh.coolPrint(optionsMessage))
 
     if option == '1':
+        calculatorMessage = "You will be asked to enter numbers and operators through a series of prompts, and you will get options to contiue operation or terminate it."
+        print (mh.coolPrint(calculatorMessage))
         calculator_main()
         continueBot()
     elif option == '2':
         callCountryBot()
         continueBot()
     elif option == '3':
+        weatherMessage = "You can ask me things like 'what is the temperature in january?' or just 'january' or just 'what is the temperature?' to get the current month\'s temperature."
         theWeatherBot()
         continueBot()
     elif option in ['N','n','Q','q']:
         print("Nice talking with you Human, beep beep booop")
     else:
-        print("Sorry, I am not sure what to do witht that instruction, mind saying it again err.. I mean typing it again?")
+        print("Sorry, I am not sure what to do with that instruction, mind saying it again err.. I mean typing it again?")
         HELEN()
 
 HELEN()
