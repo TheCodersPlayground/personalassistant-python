@@ -1,11 +1,13 @@
 import json
 from modules.assets.countryHelper import countryHelper
 
+#get's data from a json file
 def getData():
     countryData = countryHelper.getCountryData()
     keyString, inputList = countryHelper.getInput()
     return inputList, countryData
 
+#returns the requested data from the parsed json data
 def countryBot(inputList, countryData):
     if (len(inputList)==2):
         try:
@@ -35,6 +37,8 @@ def countryBot(inputList, countryData):
             print ("I don't think I know what you asked, please ask me something I know!")
             keyString, inputList = countryHelper.getInput()
             countryBot(inputList, countryData)
+
+#entry function to trigger country bot
 def callCountryBot():
     inputList, countryData = getData()
     countryBot(inputList, countryData)

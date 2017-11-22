@@ -1,3 +1,4 @@
+#function to validate a number, accepts one variable
 def validateNumber(prompt):
     while True:
         try:
@@ -12,7 +13,8 @@ def validateNumber(prompt):
         else:
             break
     return value
-    
+
+#function to validate operator
 def validateOperator(prompt):
     while True:
         value = input(prompt)
@@ -22,11 +24,13 @@ def validateOperator(prompt):
             break
     return value
 
+#determines if the result is to be preserved or cleared for next operation
 def askDecision():
     decision = validateDecision("Do you want to continue the operation?\n Press 1 to continue operation,\
 \n Press 2 to clear the result and start a new calculation \n Press 3 to Exit calculator\n")
     return decision
-        
+
+
 def validateDecision(prompt):
     while True:
         value = input(prompt)
@@ -40,22 +44,28 @@ def calculate(operator1,op,operator2):
     result = 0
     if op == '+':
         result =  (operator1) +  (operator2)
+        printResult(operator1,op,operator2,result)
     elif op == '-':
         result =  (operator1) -  (operator2)
+        printResult(operator1,op,operator2,result)
     elif op == '/':
         try:
             result =  (operator1) /  (operator2)
+            printResult(operator1,op,operator2,result)
         except ZeroDivisionError:
             print("The second operator cannot be zero")
             result = repeatSecondInput(operator1,op,operator2)
     elif op == '*':
         result =  (operator1) *  (operator2)
+        printResult(operator1,op,operator2,result)
     elif op == '%':
         result =  (operator1) %  (operator2)
+        printResult(operator1,op,operator2,result)
     elif op == '^':
         result =  (operator1) **  (operator2)
+        printResult(operator1,op,operator2,result)
 
-    printResult(operator1,op,operator2,result)
+    
     return result
 
 def continueCalculation(result):
@@ -68,7 +78,7 @@ def continueCalculation(result):
             number3 = validateNumber("Please enter the next number: ")
             #print(number3)
             result1 = calculate(result, operation2, number3)
-            print ("The result of ",result, operation2, number3,"is", result1)
+            print ("The result  ",result, operation2, number3,"is", result1)
             result = result1
             continue
         elif decision == '2':
@@ -76,7 +86,7 @@ def continueCalculation(result):
             operation1 = validateOperator("Please enter an operator you wish to use (+,-,*,/,%,^): ")
             number2 = validateNumber("Please enter the second number: ")
             result = calculate(number1,operation1,number2)
-            print ("The result of ",number1, operation1, number2,"is", result)
+            print ("The result  ",number1, operation1, number2,"is", result)
             continue
         elif decision == '3':
             break
@@ -96,8 +106,3 @@ def calculator_main():
     number2 = validateNumber("Please enter the second number: ")
     result = calculate(number1,operation1,number2)
     continueCalculation(result)
-
-
-
-
-
