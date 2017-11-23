@@ -1,11 +1,13 @@
 import datetime
 from modules.assets.temperatureHelper import tempHelper
 
+#function - weatherbot - comprehensive
 def theWeatherBot():
     loopController = True
     weatherData = tempHelper.getWeatherData()
     userReq, userReqList = tempHelper.getUserInput()
 
+    #checks the input string for keywords and returns the appropriate temperature
     while (loopController == True):
         if ((("what") in userReq) and (("temperature") in userReq )):
             if any(a in tempHelper.monthArray for a in userReqList):

@@ -49,6 +49,7 @@ def calculate(operator1,op,operator2):
         result =  (operator1) -  (operator2)
         printResult(operator1,op,operator2,result)
     elif op == '/':
+        #Logic to avoid DivideByZero exception
         try:
             result =  (operator1) /  (operator2)
             printResult(operator1,op,operator2,result)
@@ -63,11 +64,10 @@ def calculate(operator1,op,operator2):
         printResult(operator1,op,operator2,result)
     elif op == '^':
         result =  (operator1) **  (operator2)
-        printResult(operator1,op,operator2,result)
-
-    
+        printResult(operator1,op,operator2,result)  
     return result
 
+#function to continue calculation with the existing result or start a new calculation
 def continueCalculation(result):
     while True:
         decision = askDecision()
@@ -91,7 +91,7 @@ def continueCalculation(result):
         elif decision == '3':
             break
     
-
+#function helper to prevent DivideByZero exception
 def repeatSecondInput(number1,operation1,number2):
     number2 = validateNumber("Please enter the second number: ")
     result = calculate(number1,operation1,number2)
@@ -100,6 +100,7 @@ def repeatSecondInput(number1,operation1,number2):
 def printResult(number1,operation1,number2,result):
      print ("The result of ",number1, operation1, number2,"is", result)
 
+#entry point function of the calculator program
 def calculator_main():
     number1 = validateNumber("Please enter the first number: ")
     operation1 = validateOperator("Please enter an operator you wish to use (+,-,*,/,%,^): ")
