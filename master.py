@@ -3,6 +3,8 @@ from modules.country import callCountryBot
 from modules.masterHelper import masterHelper as mh
 from modules.weather import theWeatherBot
 
+firstTimeUse = 0
+
 def continueBot():
     continueText = "Please press 'Y' to continue talking with me or press 'N' to exit: "
     option = input(mh.coolPrint(continueText))
@@ -13,13 +15,16 @@ def continueBot():
         print("Nice talking with you Human, beep beep booop")
 
 def HELEN():
-    welcomeMessage = "Hi, my name is HELEN and I am your personalized assistant. I can do all sorts of stuffs, I can tell the weather, I know facts about countries and I can do math as well."
+    global firstTimeUse
+    if (firstTimeUse == 0):
+        welcomeMessage = "Hi, my name is HELEN and I am your personalized assistant. I can do all sorts of stuffs, I can tell the weather, I know facts about countries and I can do math as well." 
+        mh.coolPrint(welcomeMessage)
+        firstTimeUse = 1
+
     optionsMessage = "\nPress 1 to transform me to my math bot form\
                     \nPress 2 to transform me to my country bot form\
                     \nPress 3 to transform me to my weather bot form\
                     \nTo exit press 'N' or 'Q':\n"
-    mh.coolPrint(welcomeMessage)
-
     option = input(mh.coolPrint(optionsMessage))
 
     if option == '1':
