@@ -9,6 +9,7 @@ def theWeatherBot():
 
     #checks the input string for keywords and returns the appropriate temperature
     while (loopController == True):
+        #checks for keywords "what" and "temperature"
         if ((("what") in userReq) and (("temperature") in userReq )):
             if any(a in tempHelper.monthArray for a in userReqList):
                 for i in userReqList:
@@ -25,8 +26,8 @@ def theWeatherBot():
             else:
                 currentMonth = datetime.datetime.now().strftime("%B").lower()
                 temperature = tempHelper.getTemperature(currentMonth,weatherData)
-                print ("The temperature in celcius: ",temperature)          
-                print ("The temperature in Fahrenheit: ",tempHelper.celciusToFahrenheit(temperature))
+                print ("The temperature in celcius for" ,currentMonth ,": ",temperature)          
+                print ("The temperature in Fahrenheit for" ,currentMonth ,": ",tempHelper.celciusToFahrenheit(temperature))
                 loopController = False 
                 continueOperation = input("Want to know the forcast for another month? If yes, please press Y and if you want to exit, please press N: ")
                 if continueOperation in tempHelper.assent:

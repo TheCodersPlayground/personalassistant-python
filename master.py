@@ -3,8 +3,10 @@ from modules.country import callCountryBot
 from modules.masterHelper import masterHelper as mh
 from modules.weather import theWeatherBot
 
+# Flag to check first time use
 firstTimeUse = 0
 
+# Function to continue bot operation
 def continueBot():
     continueText = "Please press 'Y' to continue talking with me or press 'N' to exit: "
     option = input(mh.coolPrint(continueText))
@@ -14,6 +16,7 @@ def continueBot():
     else:
         print("Nice talking with you Human, beep beep booop")
 
+# Main function, named after a famous AI assitant of Tony Stark aka Iron Man
 def HELEN():
     global firstTimeUse
     if (firstTimeUse == 0):

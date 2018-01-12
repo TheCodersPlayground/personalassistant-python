@@ -1,7 +1,7 @@
 import json
 from modules.assets.countryHelper import countryHelper
 
-#get's data from a json file
+#gets data from a json file
 def getData():
     countryData = countryHelper.getCountryData()
     keyString, inputList = countryHelper.getInput()

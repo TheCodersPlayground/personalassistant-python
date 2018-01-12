@@ -74,9 +74,7 @@ def continueCalculation(result):
     
         if decision == '1':
             operation2 = validateOperator("Please enter an operator you wish to use on the previous result (+,-,*,/,%,^): ")
-            #print(operation2)
             number3 = validateNumber("Please enter the next number: ")
-            #print(number3)
             result1 = calculate(result, operation2, number3)
             print ("The result  ",result, operation2, number3,"is", result1)
             result = result1
