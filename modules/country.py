@@ -11,7 +11,7 @@ def getData():
 def countryBot(inputList, countryData):
     if (len(inputList)==2):
         try:
-            information = countryData[inputList[1]][inputList[0]]
+            information = countryData[inputList[1].capitalize()][inputList[0]]
             print (information)
             decision = input("You want to continue learn about the numbers related to countries? Press Y or N:")
             if decision == "y" or decision == "Y":
